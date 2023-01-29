@@ -16,8 +16,10 @@ export default function Home() {
   const [messages,setMessages]=useState('')
   const [logs,setLogs]=useState('')
   const [loading,setLoading]=useState(true)
+  const [value,setValue]=useState('Enter passphrase')
 
    const fetchData=async()=>{
+      console.log('start fetching data')
       document.getElementById('loading').hidden=false
       let dupusers=await axios.get('/api/users')
       dupusers=await dupusers.data.message
@@ -36,7 +38,20 @@ export default function Home() {
     <>
       <TopBar />
       <br/> 
-      <center><strong><button type='button' className='btn btn-primary' onClick={fetchData}>fetchdata</button></strong></center>
+      <center>
+        <input className='p-1 m-2 rounded' placeholder='Enter the passphrase' onChange={(e)=>{
+          axios.post('/api/password',{password:e.target.value})
+          .then((req)=>{
+            console.log("Correct Password")
+            document.getElementById('fetchdata').hidden=false
+            document.getElementById('fetchdata').innerHTML='Fetch Data'
+          })
+          .catch((err)=>{
+          })
+        }}></input>
+      </center>
+      <br/>
+      <center><strong><button id='fetchdata' hidden={true} type='button' className='btn btn-primary' onClick={fetchData}>Enter the passphrase</button></strong></center>
 
       {(!users || !messages || !logs)? <h1 id='loading' hidden>Loading....</h1>:
       <>

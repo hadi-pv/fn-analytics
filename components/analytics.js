@@ -30,7 +30,7 @@ export default function analytics({users,messages}) {
                 const value=users.filter((k)=>k.ratingtype==arr[0] && k.newstype==arr[1]).length
               return(
                 <>
-                  <Col key={id} className='border m-1 p-1'>
+                  <Col key={id} className={`${styles.col2} border m-1 p-1`}>
                     <h5>Rating : {arr[0]}</h5>
                     <h5>News Type : {arr[1]=='ptn'? 'Plain':'LikeShare'}</h5>
                     <h5>{value}</h5>
