@@ -37,6 +37,7 @@ export default function newsanalytics({news,messages,users,logs}) {
 
                 return(
                 <Col md={3} key={v.id} className={styles.col}>
+                    <button type='button' className='btn btn-secondary'><h5>{v.id}</h5></button>
                     <Row>
                       <center className='d-md-block'><img className="h-full" src={v.image} alt="img" height={180} width={180} /></center>
                     </Row>
