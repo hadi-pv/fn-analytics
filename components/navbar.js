@@ -22,10 +22,10 @@ export default function TopBar(props) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link onClick={()=>props.setSelectedType('users')}>Users</Nav.Link>
-            <Nav.Link onClick={()=>props.setSelectedType('news')}>News</Nav.Link>
+            {/* <Nav.Link onClick={()=>props.setSelectedType('users')}>Users</Nav.Link>
+            <Nav.Link onClick={()=>props.setSelectedType('news')}>News</Nav.Link> */}
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -33,7 +33,7 @@ export default function TopBar(props) {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

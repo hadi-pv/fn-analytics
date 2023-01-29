@@ -36,8 +36,8 @@ export default function newsanalytics({news,messages,users,logs}) {
                 const k14=logs.filter((k)=>k.news_id==v.id && k.rt=='333' && k.task=='33').length
 
                 return(
-                <Col md={3} key={v.id} className='p-2 border'>
-                    <Row className='bg-[#bde1b9] rounded-md ' >
+                <Col md={3} key={v.id} className={styles.col}>
+                    <Row>
                       <center className='d-md-block'><img className="h-full" src={v.image} alt="img" height={180} width={180} /></center>
                     </Row>
                     <Row>
@@ -46,24 +46,24 @@ export default function newsanalytics({news,messages,users,logs}) {
                     <Row>
                         <Col>Family : {k1}</Col><Col>Friend : {k2}</Col><Col>Colleague : {k3}</Col>
                     </Row>
-                    <Row className='p-2 border m-2'>
+                    <Row className={`${styles.col2} p-2 border m-2`}>
                         <h5>Rating type : 000</h5>
                         <Col className='p-2 border m-2'><h5>Send : {k4}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed : {k5}</h5></Col>
                     </Row>
-                    <Row className='p-2 border m-2'>
+                    <Row className={`${styles.col2} p-2 border m-2`}>
                         <h5>Rating type : 111</h5>
                         <Col className='p-2 border m-2'><h5>Send : {k6}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed at modal 1 : {k7}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed at modal 3 : {k8}</h5></Col>
                     </Row>
-                    <Row className='p-2 border m-2'>
+                    <Row className={`${styles.col2} p-2 border m-2`}>
                         <h5>Rating type : 222</h5>
                         <Col className='p-2 border m-2'><h5>Send : {k9}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed at modal 1 : {k10}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed at modal 2 : {k11}</h5></Col>
                     </Row>
-                    <Row className='p-2 border m-2'>
+                    <Row className={`${styles.col2} p-2 border m-2`}>
                         <h5>Rating type : 333</h5>
                         <Col className='p-2 border m-2'><h5>Send : {k12}</h5></Col>
                         <Col className='p-2 border m-2'><h5>Closed at modal 1 : {k13}</h5></Col>
