@@ -46,12 +46,13 @@ export default function analytics({users,messages,logs}) {
       })
     })
        const options = { 
+        filename: 'UsersCSV',
         fieldSeparator: ',',
         quoteStrings: '"',
         decimalSeparator: '.',
         showLabels: true, 
         showTitle: true,
-        title: 'Uers',
+        title: 'UsersCSV',
         useTextFile: false,
         useBom: true,
         useKeysAsHeaders: true,
@@ -64,12 +65,13 @@ export default function analytics({users,messages,logs}) {
   }
   const messagecsv=()=>{
        const options = { 
+        filename: 'MessagesCSV',
         fieldSeparator: ',',
         quoteStrings: '"',
         decimalSeparator: '.',
         showLabels: true, 
         showTitle: true,
-        title: 'Uers',
+        title: 'MessagesCSV',
         useTextFile: false,
         useBom: true,
         useKeysAsHeaders: true,
@@ -82,12 +84,13 @@ export default function analytics({users,messages,logs}) {
   }
   const logscsv=()=>{
        const options = { 
+        filename: 'LogsCSV',
         fieldSeparator: ',',
         quoteStrings: '"',
         decimalSeparator: '.',
         showLabels: true, 
         showTitle: true,
-        title: 'Uers',
+        title: 'LogsCSV',
         useTextFile: false,
         useBom: true,
         useKeysAsHeaders: true,
