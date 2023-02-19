@@ -16,11 +16,12 @@ export default async function handler(req, res) {
           res.status(200).send('No data')
       }
 
+
       res.status(200).send({
           message:Array.from(
               result.rows,(row)=>{
-                  const {user_id,name,age,gender,mothertongue,homestate,educationalqualification,educationalbackground,occupation,socialmediausage,socialmediausageorder,socialmediausagetime,iswhatsappgroupmember,whatsappusagefrequencyfornews,prefferedlanguageonsocialmedia,email,family,friend,colleague,ratingtype,newstype,collegename}=row
-                  return {user_id,name,age,gender,mothertongue,homestate,educationalqualification,educationalbackground,occupation,socialmediausage,socialmediausageorder,socialmediausagetime,iswhatsappgroupmember,whatsappusagefrequencyfornews,prefferedlanguageonsocialmedia,email,family,friend,colleague,ratingtype,newstype,collegename}
+                  const {user_id,name,age,gender,mothertongue,homestate,educationalqualification,educationalbackground,occupation,socialmediausage,socialmediausageorder,socialmediausagetime,iswhatsappgroupmember,whatsappusagefrequencyfornews,prefferedlanguageonsocialmedia,email,family,friend,colleague,ratingtype,newstype,collegename,datetime}=row
+                  return {user_id,name,age,gender,mothertongue,homestate,educationalqualification,educationalbackground,occupation,socialmediausage,socialmediausageorder,socialmediausagetime,iswhatsappgroupmember,whatsappusagefrequencyfornews,prefferedlanguageonsocialmedia,email,family,friend,colleague,ratingtype,newstype,collegename,datetime}
               }
           )
       })

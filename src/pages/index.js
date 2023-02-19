@@ -33,6 +33,8 @@ export default function Home() {
       console.log(duplogs)
     }
 
+    
+
   
   return (
     <>
@@ -52,10 +54,10 @@ export default function Home() {
       </center>
       <br/>
       <center><strong><button id='fetchdata' hidden={true} type='button' className='btn btn-primary' onClick={fetchData}>Enter the passphrase</button></strong></center>
-
+        <hr/>
       {(!users || !messages || !logs)? <h1 id='loading' hidden>Loading....</h1>:
       <>
-      <Analytics users={users} messages={messages}/>
+      <Analytics users={users} messages={messages} logs={logs}/>
       <Newsanalytics logs={logs} news={data} users={users} messages={messages}/>
       </>}
     </>
