@@ -15,22 +15,34 @@ export default function Home() {
   const [users,setUsers]=useState('')
   const [messages,setMessages]=useState('')
   const [logs,setLogs]=useState('')
+  const [alldata,setAlldata]=useState('')
   const [loading,setLoading]=useState(true)
   const [value,setValue]=useState('Enter passphrase')
 
    const fetchData=async()=>{
       console.log('start fetching data')
-      document.getElementById('loading').hidden=false
+      document.getElementById('loading').innerHTML='Loading.... 0%'
+
       let dupusers=await axios.get('/api/users')
       dupusers=await dupusers.data.message
       setUsers(dupusers)
+      document.getElementById('loading').innerHTML='Loading.... 25%'
+
       let dupmessages=await axios.get('/api/messages')
       dupmessages=await dupmessages.data.message
       setMessages(dupmessages)
+      document.getElementById('loading').innerHTML='Loading.... 50%'
+
       let duplogs=await axios.get('/api/logs')
       duplogs=await duplogs.data.message
       setLogs(duplogs)
-      console.log(duplogs)
+      document.getElementById('loading').innerHTML='Loading.... 75%'
+
+      let dupalldata=await axios.get('/api/alldata')
+      dupalldata=await dupalldata.data.message
+      setAlldata(dupalldata)
+      document.getElementById('loading').innerHTML='Loading.... 100%'
+      
     }
 
     
@@ -55,9 +67,9 @@ export default function Home() {
       <br/>
       <center><strong><button id='fetchdata' hidden={true} type='button' className='btn btn-primary' onClick={fetchData}>Enter the passphrase</button></strong></center>
         <hr/>
-      {(!users || !messages || !logs)? <h1 id='loading' hidden>Loading....</h1>:
+      {(!users || !messages || !logs)? <h1 id='loading'></h1>:
       <>
-      <Analytics users={users} messages={messages} logs={logs}/>
+      <Analytics users={users} messages={messages} logs={logs} alldata={alldata}/>
       <Newsanalytics logs={logs} news={data} users={users} messages={messages}/>
       </>}
     </>

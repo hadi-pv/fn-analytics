@@ -8,7 +8,7 @@ import { Container, Row ,Col} from 'react-bootstrap';
 import { ExportToCsv } from 'export-to-csv';
 
 
-export default function analytics({users,messages,logs}) {
+export default function analytics({users,messages,logs,alldata}) {
 
   const typearray=[['000','ptn'],['111','ptn'],['222','ptn'],['333','ptn'],['000','lsn'],['111','lsn'],['222','lsn'],['333','lsn']]
 
@@ -101,6 +101,67 @@ export default function analytics({users,messages,logs}) {
        
       csvExporter.generateCsv(logs);
   }
+
+  const alldatacsv=()=>{
+    var all_data=alldata.map((user)=>{
+      var socialmediausage=''
+      user.socialmediausage.map((s)=>{
+        socialmediausage+=s+','
+      })
+      return({
+        user_id:user.user_id,
+        name:user.name,
+        age:user.age,
+        gender:user.gender,
+        mothertongue:user.mothertongue,
+        homestate:user.homestate,
+        educationalqualification:user.educationalqualification,
+        educationalbackground:user.educationalbackground,
+        occupation:user.occupation,
+        socialmediausage:socialmediausage,
+        socialmediausageorder:String(user.socialmediausageorder[1])+','+String(user.socialmediausageorder[2])+','+String(user.socialmediausageorder[3]),
+        socialmediausagetime:user.socialmediausagetime,
+        iswhatsappgroupmember:user.iswhatsappgroupmember,
+        whatsappusagefrequencyfornews:user.whatsappusagefrequencyfornews,
+        prefferedlanguageonsocialmedia:user.prefferedlanguageonsocialmedia,
+        email:user.email,
+        family:user.family,
+        friend:user.friend,
+        colleague:user.colleague,
+        ratingtype:user.ratingtype,
+        newstype:user.newstype,
+        collegename:user.collegename,
+        datetime:String(user.datetime),
+        id:user.id,
+        news_id:user.news_id,
+        task:user.task,
+        rt:user.rt,
+        nt:user.nt,
+        send_to:user.send_to,
+        close_from:user.close_from,
+        time_in_sec:user.time_in_sec,
+        add_info:user.add_info
+      })
+    })
+      const options = { 
+      filename: 'AllDataCSV',
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: 'AllDataCSV',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+      };
+      
+    const csvExporter = new ExportToCsv(options);
+      
+    csvExporter.generateCsv(all_data);
+  }
+
   return (
     <>
       <div style={{'padding':'5vh'}}>
@@ -118,6 +179,7 @@ export default function analytics({users,messages,logs}) {
           <Col style={{'padding':'1vh'}}><center><strong><button type='button' className='btn btn-primary' onClick={usercsv}>Users</button></strong></center></Col>
           <Col style={{'padding':'1vh'}}><center><strong><button type='button' className='btn btn-primary' onClick={messagecsv}>Messages</button></strong></center></Col>
           <Col style={{'padding':'1vh'}}><center><strong><button type='button' className='btn btn-primary' onClick={logscsv}>logs</button></strong></center></Col>
+          <Col style={{'padding':'1vh'}}><center><strong><button type='button' className='btn btn-primary' onClick={alldatacsv}>All Data</button></strong></center></Col>
         </Row>
         </center>
         <br/>
