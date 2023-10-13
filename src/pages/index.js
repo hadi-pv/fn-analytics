@@ -38,11 +38,24 @@ export default function Home() {
       setLogs(duplogs)
       document.getElementById('loading').innerHTML='Loading.... 75%'
 
-      let dupalldata=await axios.get('/api/alldata')
-      dupalldata=await dupalldata.data.message
-      setAlldata(dupalldata)
+      // let dupalldata=await axios.get('/api/alldata',config)
+      // dupalldata=await dupalldata.data.message
+      // setAlldata(dupalldata)
+      setAlldata(fetchAllData(dupusers,duplogs))
       document.getElementById('loading').innerHTML='Loading.... 100%'
       
+    }
+
+    const fetchAllData = (dupusers,duplogs) =>{
+      let dupalldata = [];
+      duplogs.forEach(element => {
+        let user = dupusers.find(user => user.user_id === element.user_id);
+        dupalldata.push({
+          ...user,
+          ...element
+        })
+      });
+      return dupalldata;
     }
 
     
