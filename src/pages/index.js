@@ -67,7 +67,7 @@ export default function Home() {
       <br/>
       <center><strong><button id='fetchdata' hidden={true} type='button' className='btn btn-primary' onClick={fetchData}>Enter the passphrase</button></strong></center>
         <hr/>
-      {(!users || !messages || !logs)? <h1 id='loading'></h1>:
+      {(!users || !messages || !logs || !alldata)? <h1 id='loading'></h1>:
       <>
       <Analytics users={users} messages={messages} logs={logs} alldata={alldata}/>
       <Newsanalytics logs={logs} news={data} users={users} messages={messages}/>
